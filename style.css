@@ -1,0 +1,913 @@
+/* --- Teknolojik, Koyu ve Soğuk Uzay Teması --- */
+:root {
+  --bg-main: linear-gradient(135deg, #0a0a23 0%, #181830 60%, #1a1446 100%);
+  --bg-card: rgba(24, 24, 48, 0.85);
+  --glass-blur: blur(8px);
+  --text-main: #f3f3fa;
+  --text-secondary: #b3b3d1;
+  --accent: #a259ff;
+  --accent2: #43c6ff;
+  --accent3: #23234d;
+  --accent4: #5efce8;
+  --accent-gradient: linear-gradient(90deg, #a259ff 0%, #43c6ff 100%);
+  --accent-gradient2: linear-gradient(90deg, #23234d 0%, #7873f5 100%);
+  --accent-gradient3: linear-gradient(90deg, #5efce8 0%, #7367f0 100%);
+  --card-shadow: 0 4px 32px 0 rgba(50, 50, 100, 0.18);
+  --border-radius: 18px;
+  --btn-gradient: linear-gradient(90deg, #a259ff 0%, #43c6ff 100%);
+  --btn-gradient2: linear-gradient(90deg, #23234d 0%, #7873f5 100%);
+  --btn-hover: #23234d;
+  --danger: #ff4d6d;
+}
+
+/* Genel Ayarlar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+  }
+  
+/* Navbar Stilleri */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(24, 24, 48, 0.92);
+    box-shadow: var(--card-shadow);
+    position: sticky; /* Sayfa kaydırıldığında navbar'ın üstte kalmasını sağlar */
+    top: 0;
+    z-index: 1000; /* Diğer elementlerin üzerinde görünmesini sağlar */
+    border-bottom: 1px solid #23234d;
+    backdrop-filter: var(--glass-blur);
+  }
+  
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    background: var(--accent-gradient2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 12px #181830;
+}
+  
+/* Navbar linklerinin düzeni */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+  
+.nav-links a:hover {
+    color: var(--accent3);
+}
+  
+/* Modern Butonlar */
+.join-btn, #logoutButton, .edit-btn, .portfolio-btn {
+    background: var(--btn-gradient2);
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 2px 12px 0 rgba(255,110,196,0.10);
+    transition: background 0.2s, box-shadow 0.2s, color 0.2s, transform 0.2s;
+    margin-right: 8px;
+}
+.join-btn:hover, #logoutButton:hover, .edit-btn:hover, .portfolio-btn:hover {
+    background: var(--btn-gradient3);
+    color: var(--accent4);
+    box-shadow: 0 4px 24px 0 rgba(94,252,232,0.18);
+    transform: scale(1.04);
+}
+#logoutButton {
+    background: var(--danger);
+    color: #fff;
+    margin-left: 8px;
+}
+#logoutButton:hover {
+    background: #ff1e4d;
+    color: #fff;
+}
+  
+/* Hero Bölümü Stilleri */
+  .hero {
+    background: linear-gradient(180deg, #0a0a23 60%, #181830 100%);
+    color: var(--text-main);
+    text-align: center;
+    padding: 100px 20px; 
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: var(--accent-gradient3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: var(--text-main);
+    text-shadow: 0 2px 12px #181830;
+}
+
+  .hero-content p {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    margin-bottom: 24px;
+    text-shadow: 0 2px 8px #181830;
+  }
+
+/* Arama kutusu stilleri */
+  .search-input {
+    padding: 12px;
+    width: 60%;
+    max-width: 500px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 1rem;
+    background: #23234d;
+    color: var(--text-main);
+    box-shadow: 0 2px 12px 0 rgba(67,198,255,0.10);
+}
+  
+.search-input::placeholder {
+    color: #b3b3d1;
+    opacity: 1;
+  }
+  
+  .search-btn {
+    padding: 12px 20px;
+    background: var(--btn-gradient);
+    color: #fff;
+    border: none;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 2px 12px 0 rgba(162,89,255,0.12);
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+  
+.search-btn:hover {
+    background: var(--btn-gradient2);
+    color: var(--accent3);
+    transform: scale(1.06);
+}
+  
+/* Kategoriler Bölümü Stilleri */
+  .categories {
+    padding: 40px 60px;
+    background: rgba(24, 24, 48, 0.92);
+    backdrop-filter: var(--glass-blur);
+  }
+  
+  .categories h2 {
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: var(--accent-gradient2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 12px #181830;
+  }
+  
+  .category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .category-item {
+    background: var(--accent-gradient);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s, box-shadow 0.2s, transform 0.2s;
+    margin-right: 8px;
+    box-shadow: 0 2px 12px 0 rgba(67,198,255,0.10);
+}
+  
+.category-item:nth-child(2n) {
+    background: var(--accent-gradient2);
+}
+  
+.category-item:nth-child(3n) {
+    background: var(--accent-gradient3);
+  }
+  
+  .category-item:hover {
+    background: #fff;
+    color: #181830;
+    transform: scale(1.07);
+    box-shadow: 0 4px 24px 0 rgba(255,110,196,0.18);
+  }
+  
+/* Projeler ve Mentorlar Bölümü Stilleri */
+  .services {
+    padding: 40px 60px;
+  }
+  
+  .service-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  .card {
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    padding: 1.5rem;
+    color: var(--text-main);
+    backdrop-filter: var(--glass-blur);
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 32px 0 rgba(255,110,196,0.18);
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.project-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+}
+
+.project-info {
+    flex: 1;
+}
+
+.project-info h3 {
+    margin: 0;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.project-date {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0.25rem 0 0 0;
+}
+
+.project-description {
+    color: var(--text-secondary);
+    margin: 1rem 0;
+    line-height: 1.5;
+}
+
+.project-skills {
+    background: var(--accent3);
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.project-skills strong {
+    color: var(--accent2);
+}
+
+.request-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 12px;
+    background: var(--btn-gradient);
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 12px 0 rgba(67,198,255,0.10);
+}
+
+.request-btn:hover {
+    background: var(--btn-gradient2);
+    color: var(--accent4);
+    transform: scale(1.02);
+    box-shadow: 0 4px 24px 0 rgba(94,252,232,0.18);
+}
+  
+/* Footer Stilleri */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(24, 24, 48, 0.92);
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border-top: 1px solid #23234d;
+    backdrop-filter: var(--glass-blur);
+}
+
+/* Mesaj kutusu stilleri */
+.messageDiv {
+    background: var(--accent3);
+    color: #fff;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 8px;
+    font-size: 1rem;
+    opacity: 0;
+    animation: fadeout 7s forwards;
+    box-shadow: 0 2px 12px 0 rgba(255,110,196,0.12);
+  }
+  
+/* Modal (Popup) Stilleri */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+    background: rgba(10,10,35,0.92);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+    backdrop-filter: var(--glass-blur);
+}
+
+.modal-content {
+    background: var(--bg-card);
+  padding: 30px;
+    border-radius: var(--border-radius);
+  width: 350px;
+    box-shadow: var(--card-shadow);
+  text-align: center;
+  position: relative;
+    color: var(--text-main);
+    backdrop-filter: var(--glass-blur);
+}
+
+.modal-content h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+    background: var(--accent-gradient2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 12px #181830;
+}
+
+.modal-description {
+  font-size: 14px;
+    color: var(--text-secondary);
+  margin-bottom: 20px;
+    text-shadow: 0 2px 8px #181830;
+}
+
+/* Modal içindeki form elemanları */
+.modal-content input, .modal-content textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+    border: 1px solid #23234d;
+  border-radius: 8px;
+  font-size: 14px;
+    background: #23234d;
+    color: var(--text-main);
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 12px;
+    background: var(--btn-gradient2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+.modal-content button:hover {
+    background: var(--btn-gradient3);
+    color: var(--accent4);
+    transform: scale(1.04);
+}
+
+.modal-footer {
+  margin-top: 15px;
+  font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.modal-footer a {
+    color: var(--accent2);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.modal-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Modal kapatma butonu */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: var(--accent3);
+}
+
+/* Giriş yapmış/yapmamış kullanıcı arayüzü stilleri */
+#notLoggedIn, #loggedIn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#profileLink {
+    color: #1dbf73;
+    font-weight: 600;
+}
+
+#logoutButton {
+    background-color: #ff4d4d;
+}
+
+#logoutButton:hover {
+    background-color: #ff3333;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    .profile-container {
+        padding: 12px;
+    }
+    .navbar {
+        padding: 12px 10px;
+    }
+}
+
+#blockchainBgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.45;
+  filter: blur(0.5px);
+}
+
+/* Navbar'daki profil ve çıkış yap butonları için modern stil */
+#profileLink, #logoutButton {
+  background: var(--btn-gradient2);
+  color: #fff !important;
+  border: none;
+  padding: 10px 22px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 2px 12px 0 rgba(67,198,255,0.10);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  margin-left: 8px;
+  text-decoration: none;
+  display: inline-block;
+}
+#profileLink:hover, #logoutButton:hover {
+  background: var(--btn-gradient3);
+  color: var(--accent4) !important;
+  transform: scale(1.04);
+}
+
+/* Profil Sayfası Modern ve Sade Stil */
+.profile-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 32px;
+  background: rgba(24, 24, 48, 0.92);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  color: var(--text-main);
+  backdrop-filter: var(--glass-blur);
+}
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.profile-header img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  padding: 3px;
+  background: conic-gradient(from 180deg at 50% 50%, #a259ff, #43c6ff, #23234d, #5efce8, #a259ff);
+  box-shadow: 0 2px 16px 0 rgba(67,198,255,0.18);
+  border: none;
+}
+#editPhotoBtn, #savePhotoBtn, #cancelPhotoBtn, #editNameBtn, #saveNameBtn, #cancelNameBtn {
+  background: var(--btn-gradient);
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  font-size: 1rem;
+  margin: 0 4px 8px 0;
+  box-shadow: 0 2px 12px 0 rgba(67,198,255,0.10);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+#editPhotoBtn:hover, #savePhotoBtn:hover, #cancelPhotoBtn:hover, #editNameBtn:hover, #saveNameBtn:hover, #cancelNameBtn:hover {
+  background: var(--btn-gradient2);
+  color: var(--accent2);
+  transform: scale(1.04);
+}
+.profile-info h2 {
+  margin: 0;
+  font-size: 2rem;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: var(--text-main);
+  text-shadow: 0 2px 12px #181830;
+}
+.profile-info .username {
+  color: var(--accent2);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+.profile-info .location, .profile-info .languages {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+.profile-section, .portfolio-section {
+  margin-top: 32px;
+  background: rgba(24, 24, 48, 0.92);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  box-shadow: var(--card-shadow);
+  color: var(--text-main);
+  backdrop-filter: var(--glass-blur);
+}
+.profile-section h3, .portfolio-section h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 12px #181830;
+}
+#profileAboutContainer, #aboutEditArea {
+  color: var(--text-main);
+}
+#profileAbout {
+  color: var(--text-main);
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+#aboutEditArea textarea {
+  background: #23234d;
+  color: var(--text-main);
+  border: 1px solid #23234d;
+  border-radius: 8px;
+  font-size: 1rem;
+  padding: 10px;
+}
+
+.no-projects, .error-message {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    margin: 1rem;
+    backdrop-filter: var(--glass-blur);
+}
+
+.error-message {
+    color: var(--danger);
+}
+
+.view-all-btn {
+    display: block;
+    margin: 2rem auto;
+    padding: 12px 24px;
+    background: var(--btn-gradient);
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 12px 0 rgba(67,198,255,0.10);
+}
+
+.view-all-btn:hover {
+    background: var(--btn-gradient2);
+    color: var(--accent4);
+    transform: scale(1.04);
+    box-shadow: 0 4px 24px 0 rgba(94,252,232,0.18);
+}
+
+.admin-link {
+    background: var(--btn-gradient2);
+    color: #fff !important;
+    border: none;
+    padding: 10px 22px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 2px 12px 0 rgba(67,198,255,0.10);
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    margin-left: 8px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.admin-link:hover {
+    background: var(--btn-gradient3);
+    color: var(--accent4) !important;
+    transform: scale(1.04);
+}
+
+.admin-card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 320px;
+  max-width: 420px;
+}
+
+.admin-card .project-header {
+  margin-bottom: 0.5rem;
+}
+
+.admin-card .project-info h3 {
+  margin: 0 0 0.2rem 0;
+  font-size: 1.2rem;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.admin-card .project-date,
+.admin-card .project-email {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin: 0 0 0.2rem 0;
+}
+
+.admin-card .project-description {
+  color: var(--text-secondary);
+  margin: 0.5rem 0 1rem 0;
+  line-height: 1.5;
+}
+
+.admin-card .project-skills {
+  background: var(--accent3);
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  margin-bottom: 1.2rem;
+  width: 100%;
+}
+
+.admin-card .project-skills strong {
+  color: var(--accent2);
+}
+
+.admin-card .admin-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.admin-card .delete-btn {
+  background: #23234d;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  box-shadow: 0 2px 12px 0 rgba(255,110,196,0.10);
+}
+
+.admin-card .delete-btn:hover {
+  background: var(--danger);
+  color: #fff;
+  transform: scale(1.04);
+}
+
+.mentor-btn {
+  background: var(--btn-gradient);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-left: 8px;
+  box-shadow: 0 2px 12px 0 rgba(67,198,255,0.10);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  text-shadow: 0 2px 8px #181830;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  outline: none;
+}
+
+.mentor-btn:hover {
+  background: var(--btn-gradient2);
+  color: var(--accent4);
+  transform: scale(1.04);
+}
+
+.approve-btn {
+  background: linear-gradient(90deg, #1dbf73 0%, #43c6ff 100%);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  box-shadow: 0 2px 12px 0 rgba(67,198,255,0.10);
+}
+
+.approve-btn:hover {
+  background: linear-gradient(90deg, #43c6ff 0%, #1dbf73 100%);
+  color: var(--accent4);
+  transform: scale(1.04);
+}
+
+.approve-btn:disabled, .reject-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+  box-shadow: none;
+}
+
+.reject-btn {
+  background: var(--danger);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  box-shadow: 0 2px 12px 0 rgba(255,110,196,0.10);
+}
+
+.reject-btn:hover {
+  background: #ff1e4d;
+  color: #fff;
+  transform: scale(1.04);
+}
+
+#projectCategory {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0 0 0;
+  border: 1px solid #23234d;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #23234d;
+  color: var(--text-main);
+  box-shadow: 0 2px 12px 0 rgba(67,198,255,0.10);
+  transition: border 0.2s, box-shadow 0.2s;
+  appearance: none;
+  outline: none;
+}
+
+#projectCategory:focus {
+  border: 1.5px solid var(--accent2);
+  box-shadow: 0 4px 16px 0 rgba(67,198,255,0.18);
+}
+
+#projectCategory option {
+  background: #181830;
+  color: var(--text-main);
+}
+
+.active-category {
+  background: var(--accent-gradient2);
+  color: #fff !important;
+  transform: scale(1.07);
+  box-shadow: 0 4px 24px 0 rgba(67,198,255,0.18);
+}
+
+#mentors .card .project-skills {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  display: block;
+}
+#mentors .card .project-skills:last-child {
+  margin-bottom: 0;
+}
+
+#mentors .card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 16px auto;
+  display: block;
+  box-shadow: 0 2px 16px 0 rgba(67,198,255,0.18);
+  background: #181830;
+}
+
+.mentor-info-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  background: var(--accent3);
+  padding: 8px 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px 0 rgba(67,198,255,0.10);
+}
+.mentor-info-row .label {
+  min-width: 110px;
+  color: var(--accent2);
+  font-weight: 600;
+  text-align: left;
+  margin-right: 8px;
+  flex-shrink: 0;
+  
+}
+.mentor-info-row .value {
+  color: var(--text-secondary);
+  word-break: break-all;
+}
+.mentor-info-row a {
+  color: var(--accent4);
+  text-decoration: underline;
+}
+.mentor-info-row:last-child {
+  margin-bottom: 0;
+}

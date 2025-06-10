@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BuildUp | Geliştirici İş Birliği Platformu</title>
+  <link rel="stylesheet" href="style.css" />
+  
+</head>
+
+<body>
+  <!-- Blockchain temalı arka plan animasyonu için canvas -->
+  <canvas id="blockchainBgCanvas"></canvas>
+  <header class="navbar">
+    <div class="logo">BuildUp</div>
+    <nav class="nav-links">
+      <a href="#">Ana Sayfa</a>
+      <a href="#projects">Projeler</a>
+      <a href="#mentors">Mentorlar</a>
+      <button class="mentor-btn" onclick="openModal('mentorModal')">Mentor Ol</button>
+      <!-- Giriş yapmamış kullanıcılar için -->
+      <div id="notLoggedIn">
+        <a href="#" onclick="openModal('loginModal')">Giriş Yap</a>
+        <button class="join-btn" onclick="openModal('registerModal')">Kayıt Ol</button>
+      </div>
+      <!-- Giriş yapmış kullanıcılar için -->
+      <div id="loggedIn" style="display: none;">
+        <a href="#" id="profileLink">Profil</a>
+        <button class="join-btn" id="ilanAc" onclick="openModal('postAdModal')">İlan Aç</button>
+        <button class="join-btn" id="logoutButton">Çıkış Yap</button>
+        <a href="/admin.html" id="adminLink" style="display: none;" class="admin-link">Admin Paneli</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Giriş Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
+      <h2>Giriş Yap</h2>
+      <p class="modal-description">Hesabınıza giriş yaparak projelere katılabilirsiniz.</p>
+      <div id="loginMessage" , class="messageDiv" , style="display: none;"></div>
+      <input type="email" placeholder="E-posta" id="loginEmail" />
+      <input type="password" placeholder="Şifre" id="loginPassword" />
+      <button id="loginButton">Giriş Yap</button>
+      <p class="modal-footer">Hesabınız yok mu? <a href="#" onclick="openModal('registerModal')">Kayıt Ol</a></p>
+    </div>
+  </div>
+
+  <!-- Kayıt Modal -->
+  <div id="registerModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('registerModal')">&times;</span>
+      <h2>Kayıt Ol</h2>
+      <div id="registerMessage" , class="messageDiv" , style="display: none;"></div>
+      <p class="modal-description">Yeni bir hesap oluşturun ve projelere katılmaya başlayın.</p>
+      <input type="text" placeholder="Ad Soyad" id="name" />
+      <input type="email" placeholder="E-posta" id="email" />
+      <input type="text" placeholder="Kullanıcı Adı" id="username" />
+      <input type="password" placeholder="Şifre" id="password" />
+      <button id="registerButton">Kayıt Ol</button>
+      <p class="modal-footer">Zaten bir hesabınız var mı? <a href="#" onclick="openModal('loginModal')">Giriş Yap</a></p>
+    </div>
+  </div>
+
+  <!-- İlan Aç Modal -->
+  <div id="postAdModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('postAdModal')">&times;</span>
+      <h2>İlan Aç</h2>
+      <input type="text" id="projectTitle" placeholder="Proje Başlığı" />
+      <select id="projectCategory" required style="margin-bottom: 10px;">
+        <option value="">Kategori Seçin</option>
+        <option value="Frontend">Frontend</option>
+        <option value="Backend">Backend</option>
+        <option value="Mobil Uygulama">Mobil Uygulama</option>
+        <option value="Yapay Zeka">Yapay Zeka</option>
+        <option value="Veri Bilimi">Veri Bilimi</option>
+        <option value="Oyun Geliştirme">Oyun Geliştirme</option>
+        <option value="Mentorluk">Mentorluk</option>
+        <option value="Tasarım">Tasarım</option>
+      </select>
+      <textarea id="projectDescription" placeholder="Proje Açıklaması" rows="4"></textarea>
+      <input type="text" id="projectSkills" placeholder="Gerekli Yetkinlikler (virgülle ayırın)" />
+      <button id="publishProjectButton">İlanı Yayınla</button>
+    </div>
+  </div>
+
+  <!-- Mentor Ol Modal -->
+  <div id="mentorModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('mentorModal')">&times;</span>
+      <h2>Mentor Başvurusu</h2>
+      <div id="mentorApplyMessage" class="messageDiv" style="display: none;"></div>
+      <input type="text" id="mentorName" placeholder="Ad Soyad" required />
+      <input type="email" id="mentorEmail" placeholder="E-posta" required />
+      <input type="text" id="mentorExpertise" placeholder="Uzmanlık Alanları (virgülle ayırın)" required />
+      <input type="url" id="mentorPortfolio" placeholder="Portföy/CV Linki (İsteğe Bağlı)" />
+      <input type="url" id="mentorGithub" placeholder="Github Profil Linki" required />
+      <textarea id="mentorAbout" placeholder="Kendinizi kısaca tanıtın" rows="4" required></textarea>
+      <button id="mentorApplyButton">Başvuruyu Gönder</button>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Doğru Ekip Arkadaşlarıyla Gerçek Projeler Üzerinde Çalış</h1>
+      <p>BuildUp ile hem iş bul hem de portföyünü geliştir</p>
+    </div>
+  </section>
+
+  <section class="categories">
+    <h2>Kategoriler</h2>
+    <div class="category-list">
+      <div class="category-item">Frontend</div>
+      <div class="category-item">Backend</div>
+      <div class="category-item">Mobil Uygulama</div>
+      <div class="category-item">Yapay Zeka</div>
+      <div class="category-item">Veri Bilimi</div>
+      <div class="category-item">Oyun Geliştirme</div>
+      <div class="category-item">Mentorluk</div>
+      <div class="category-item">Tasarım</div>
+    </div>
+  </section>
+
+  <section class="services" id="projects">
+    <h2>Popüler Projeler</h2>
+    <div class="service-cards">
+      <div class="card">
+        <img src="https://source.unsplash.com/400x250/?code" alt="Proje 1">
+        <h3>AI Destekli Not Alma Uygulaması</h3>
+        <p>Bir frontend geliştirici ve veri bilimci arıyoruz!</p>
+      </div>
+      <div class="card">
+        <img src="https://source.unsplash.com/400x250/?startup" alt="Proje 2">
+        <h3>Freelance Proje Takip Sistemi</h3>
+        <p>Backend geliştirici ve UI/UX tasarımcı arıyoruz.</p>
+      </div>
+      <div class="card">
+        <img src="https://source.unsplash.com/400x250/?teamwork" alt="Proje 3">
+        <h3>Sosyal Kodlama Platformu</h3>
+        <p>Mobil geliştirici ve Node.js bilen biriyle çalışmak istiyoruz.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="mentors">
+    <h2>Öne Çıkan Mentorlar</h2>
+    <input type="text" id="mentorSearchInput" placeholder="Mentor ara..." class="search-input" style="margin-bottom: 18px; width: 100%; max-width: 350px;">
+    <div class="service-cards">
+      <div class="card">
+        <img src="https://source.unsplash.com/400x250/?developer" alt="Mentor 1">
+        <h3>Ali Yılmaz</h3>
+        <p>5+ yıl deneyimli frontend geliştirici. React & Vue uzmanı.</p>
+      </div>
+      <div class="card">
+        <img src="https://source.unsplash.com/400x250/?programmer" alt="Mentor 2">
+        <h3>Zeynep Kaya</h3>
+        <p>Yapay zeka projelerinde mentor. TensorFlow & Python.</p>
+      </div>
+      <div class="card">
+        <img src="https://source.unsplash.com/400x250/?coding" alt="Mentor 3">
+        <h3>Mehmet Demir</h3>
+        <p>.NET ve C# ile kariyer tavsiyeleri ve proje desteği sağlıyor.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 BuildUp. Tüm hakları saklıdır.</p>
+  </footer>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = "flex";
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    window.onclick = function (event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = "none";
+      }
+    }
+  </script>
+  <script type="module" src="login-register-fixed.js"></script>
+  <script src="blockchain-bg.js"></script>
+  <script type="module" src="ilan.js"></script>
+  <script type="module" src="projects.js"></script>
+  <script type="module" src="mentor-apply.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script type="module" src="mentors.js"></script>
+</body>
+
+</html>

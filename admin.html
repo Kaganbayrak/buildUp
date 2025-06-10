@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli - Build Up</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>Admin Paneli</h1>
+            <p>Proje İlanlarını Yönet</p>
+        </header>
+
+        <main id="adminPanel" style="display: none;">
+            <h1>Admin Paneli</h1>
+            <div class="admin-stats">
+                <span>Toplam İlan: <span id="totalProjects">0</span></span>
+            </div>
+            <section class="admin-section">
+                <h2>Proje İlanları</h2>
+                <div id="adminProjectsList" class="admin-projects-list"></div>
+            </section>
+            <section class="admin-section">
+                <h2>Mentor Başvuruları</h2>
+                <div id="mentorApplicationsList" class="admin-mentor-applications-list"></div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="admin.js"></script>
+</body>
+</html> 
