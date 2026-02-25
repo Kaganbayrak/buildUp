@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Profil | BuildUp</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
   <header class="navbar">
     <div class="logo">BuildUp</div>
@@ -20,7 +22,8 @@
     <div class="profile-header">
       <img id="profilePhoto" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile Photo">
       <div id="photoEditArea" style="display:none; flex-direction:column; gap:8px; margin-top:8px;">
-        <input type="text" id="photoUrlInput" placeholder="Fotoğraf URL'si girin veya dosya seçin" style="width:100%;" />
+        <input type="text" id="photoUrlInput" placeholder="Fotoğraf URL'si girin veya dosya seçin"
+          style="width:100%;" />
         <input type="file" id="photoFileInput" accept="image/*" />
         <div>
           <button class="edit-btn join-btn" id="savePhotoBtn">Kaydet</button>
@@ -68,6 +71,7 @@
       <div id="portfolioFilesList" style="margin-top:12px;"></div>
     </div>
   </div>
-  <script type="module" src="profile.js"></script>
+  <script type="module" src="js/profile.js"></script>
 </body>
-</html> 
+
+</html>
